@@ -1,28 +1,36 @@
 import streamlit as st
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
 
-def main():
-    st.title("Minha Interface com Streamlit")
-    st.sidebar.header("Menu")
-
-    # Adicione as seções do menu
-    selected_page = st.sidebar.radio("Selecione uma opção", ["Página Inicial", "Sobre"])
-
-    if selected_page == "Página Inicial":
-        show_homepage()
-    elif selected_page == "Sobre":
-        show_about()
-
-def show_homepage():
-    st.header("Bem-vindo à Página Inicial")
-    st.write("Esta é a página inicial da minha interface.")
+def contar_digitos_finais(imagem):
+    # Abrir a imagem e converter para escala de cinza
+    img = Image.open(imagem).convert('L')
+    # Converter para array numpy
+    img_array = np.array(img)
     
-    # Adicione outros elementos, gráficos, etc.
-
-def show_about():
-    st.header("Sobre")
-    st.write("Esta é uma breve descrição sobre a minha interface.")
+    # Contar o número de pixels com cada dígito final
+    contagem_digitos = [0] * 10
+    for linha in img_array:
+        for pixel in linha:
+            ultimo_digito = pixel % 10
+            contagem_digitos[ultimo_digito] += 1
     
-    # Adicione outros elementos sobre a página 'Sobre'.
+    return contagem_digitos
 
-if __name__ == "__main__":
-    main()
+# Configurações da página
+st.title('Contador de dígitos finais em imagens')
+st.write('Faça upload de uma imagem para contar o número de pixels com cada dígito final.')
+
+# Upload da imagem
+imagem = st.file_uploader('Escolha uma imagem', type=['jpg', 'png'])
+
+if imagem is not None:
+    # Exibir a imagem
+    st.image(imagem, caption='Imagem enviada', use_column_width=True)
+    
+    # Processar a imagem e contar os dígitos finais
+    contagem_digitos = contar_digitos_finais(imagem)
+    
+    # Plotar o gráfico de barras
+    st.bar_chart(contagem_digitos)
