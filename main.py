@@ -18,8 +18,11 @@ def contar_digitos_finais(imagem):
     return contagem_digitos
 
 # Configurações da página
-st.title('Contador de dígitos finais em imagens')
-st.write('Faça upload de uma imagem para contar o número de pixels com cada dígito final.')
+st.title('Introdução à estatística - CCCh - UFMAContador de dígitos finais em imagens')
+
+st.title('Contador pixels em imagens')
+
+st.write('Faça upload de uma imagem para contar o número de pixels com o dígito final entre 0 a 9.')
 
 # Upload da imagem
 imagem = st.file_uploader('Escolha uma imagem', type=['jpg', 'png'])
