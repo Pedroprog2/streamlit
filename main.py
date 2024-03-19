@@ -18,7 +18,7 @@ def contar_digitos_finais(imagem):
     return contagem_digitos
 
 # Configurações da página
-st.title('Introdução à estatística - CCCh - UFMAContador de dígitos finais em imagens')
+st.title('Introdução à estatística - CCCh - UFMA')
 
 st.title('Contador pixels em imagens')
 
