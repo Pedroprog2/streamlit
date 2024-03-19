@@ -1,4 +1,4 @@
-import streamlit as st
+eimport streamlit as st
 from PIL import Image
 import numpy as np
 
@@ -20,7 +20,7 @@ def contar_digitos_finais(imagem):
 # Configurações da página
 st.title('Introdução à estatística - CCCh - UFMA')
 
-st.title('Contador pixels em imagens')
+st.title('Contador de pixels em imagens')
 
 st.write('Faça upload de uma imagem para contar o número de pixels com o dígito final entre 0 a 9.')
 
