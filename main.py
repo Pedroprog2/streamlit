@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 
-
 def contar_digitos_finais(imagem):
     # Abrir a imagem e converter para escala de cinza
     img = Image.open(imagem).convert('L')
@@ -32,5 +31,8 @@ if imagem is not None:
     # Processar a imagem e contar os dígitos finais
     contagem_digitos = contar_digitos_finais(imagem)
     
+    # Preparar os dados para o gráfico de barras
+    dados_grafico = {'Dígito': list(range(10)), 'Número de pixels': contagem_digitos}
+    
     # Plotar o gráfico de barras
-    st.bar_chart(contagem_digitos)
+    st.bar_chart(dados_grafico)
