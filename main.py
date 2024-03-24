@@ -7,7 +7,7 @@ def contar_digitos_iniciais(imagem):
     img = Image.open(imagem).convert('L')
     # Converter para array numpy
     img_array = np.array(img)
-
+    
     # Contar o número de pixels com cada dígito inicial
     contagem_digitos = [0] * 10  # Inicializar a lista de contagem com zeros
     for linha in img_array:
@@ -16,10 +16,7 @@ def contar_digitos_iniciais(imagem):
             if 1 <= primeiro_digito <= 9:  # Verificar se o primeiro dígito é um valor válido entre 1 e 9
                 contagem_digitos[primeiro_digito] += 1
     
-    # Excluir contagem para o dígito 0
-    del contagem_digitos[0]
-    
-    return contagem_digitos
+    return contagem_digitos[1:]  # Retornar os valores de contagem para os dígitos de 1 a 9
 
 # Configurações da página
 st.title('Introdução à estatística - CCCh - UFMA')
@@ -39,7 +36,7 @@ if imagem is not None:
     contagem_digitos = contar_digitos_iniciais(imagem)
     
     # Preparar os dados para o gráfico de barras
-    dados_grafico = {'Dígito': list(range(1, 9)), 'Número de pixels': contagem_digitos}
+    dados_grafico = {'Dígito': list(range(1, 10)), 'Número de pixels': contagem_digitos}
     
     # Plotar o gráfico de barras
     st.bar_chart(dados_grafico)
