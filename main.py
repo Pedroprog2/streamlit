@@ -10,7 +10,7 @@ def contar_digitos_finais(imagem):
    
 
     # Contar o número de pixels com cada dígito final
-    contagem_digitos = [0] * 9
+    contagem_digitos = [0] * 10
     for linha in img_array:
         for pixel in linha:
             ultimo_digito = int(str(pixel)[0])
