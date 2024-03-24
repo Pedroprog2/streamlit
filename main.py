@@ -42,7 +42,7 @@ if imagem is not None:
   contagem_digitos = contar_digitos_iniciais(imagem)
    
   # Preparar os dados para o gráfico de barras
-  dados_grafico = {'Dígito': list(range(1, 11)), 'Número de pixels': contagem_digitos[1:]}
+  dados_grafico = {'Dígito': list(range(0, 10)), 'Número de pixels': contagem_digitos[1:]}
 
    
   # Plotar o gráfico de barras
