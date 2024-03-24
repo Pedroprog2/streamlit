@@ -35,14 +35,14 @@ st.write('Faça upload de uma imagem para contar o número de pixels com o dígi
 imagem = st.file_uploader('Escolha uma imagem', type=['jpg', 'png'])
 
 if imagem is not None:
-    # Exibir a imagem
-    st.image(imagem, caption='Imagem enviada', use_column_width=True)
-    
-    # Processar a imagem e contar os dígitos iniciais
-    contagem_digitos = contar_digitos_iniciais(imagem)
-    
-    # Preparar os dados para o gráfico de barras
-    dados_grafico = {'Dígito': list(range(1, 10)), 'Número de pixels': contagem_digitos}
-    
-    # Plotar o gráfico de barras
-    st.bar_chart(dados_grafico)
+  # Exibir a imagem
+  st.image(imagem, caption='Imagem enviada', use_column_width=True)
+
+  # Processar a imagem e contar os dígitos iniciais
+  contagem_digitos = contar_digitos_iniciais(imagem)
+
+  # Preparar os dados para o gráfico de barras
+  dados_grafico = {'Dígito': list(range(1, 10)), 'Número de pixels': contagem_digitos[1:]}
+
+  # Plotar o gráfico de barras
+  st.bar_chart(dados_grafico, xlabel='Dígitos (1-9)')
