@@ -9,12 +9,12 @@ def contar_digitos_iniciais(imagem):
     img_array = np.array(img)
     
     # Contar o número de pixels com cada dígito inicial
-    contagem_digitos = [1] * 9  # Inicializar a lista de contagem com zeros
+    contagem_digitos = 1 # Inicializar a lista de contagem com zeros
     for linha in img_array:
         for pixel in linha:
             primeiro_digito = int(str(pixel)[0])  # Extrair o primeiro dígito convertendo o pixel em uma string
             if 1 <= primeiro_digito <= 9:  # Verificar se o primeiro dígito é um valor válido entre 1 e 9
-                contagem_digitos[primeiro_digito - 1] += 1  # Ajustar o índice para começar de 0
+                contagem_digitos[primeiro_digito ] += 1  # Ajustar o índice para começar de 0
     
     return contagem_digitos
 
