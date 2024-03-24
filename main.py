@@ -7,12 +7,13 @@ def contar_digitos_finais(imagem):
     img = Image.open(imagem).convert('L')
     # Converter para array numpy
     img_array = np.array(img)
-    
+   
+
     # Contar o número de pixels com cada dígito final
-    contagem_digitos = [0] * 10
+    contagem_digitos = [1] * 9
     for linha in img_array:
         for pixel in linha:
-            ultimo_digito = pixel % 10
+            ultimo_digito = int(str(pixel)[0])
             contagem_digitos[ultimo_digito] += 1
     
     return contagem_digitos
