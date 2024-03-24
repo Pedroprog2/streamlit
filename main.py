@@ -14,9 +14,9 @@ def contar_digitos_iniciais(imagem):
         for pixel in linha:
             primeiro_digito = int(str(pixel)[0])  # Extrair o primeiro dígito convertendo o pixel em uma string
             if 1 <= primeiro_digito <= 9:  # Verificar se o primeiro dígito é um valor válido entre 1 e 9
-                contagem_digitos[primeiro_digito] += 1
+                contagem_digitos[primeiro_digito - 1] += 1  # Ajustar o índice para começar de 0
     
-    return contagem_digitos[1:]  # Retornar os valores de contagem para os dígitos de 1 a 9
+    return contagem_digitos
 
 # Configurações da página
 st.title('Introdução à estatística - CCCh - UFMA')
