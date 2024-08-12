@@ -71,6 +71,7 @@ st.write('Após a decantação, colete 5 mL do sobrenadante e transfira para um 
 st.write('Adicione 2 mL de extrato de repolho roxo e agite')
 st.write('Obtenha uma imagem digital utilizando seu celular')
 st.write('Envie a imagem neste servidor')
+st.write('a Plataforma vai carregar sua imagem, selecione a região do tubo que contenha sua amostra')
 
         
 
