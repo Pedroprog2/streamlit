@@ -90,16 +90,22 @@ uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "
 # Lista para armazenar os vetores concatenados
 vetores_concatenados = []
 
+
+
+# Processar cada imagem carregada
 if uploaded_files:
     for uploaded_file in uploaded_files:
-        # Lê a imagem usando OpenCV
-        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-        image = cv2.imdecode(file_bytes, 1)
-        
-        # Processa a imagem
-        vetor = process_image(image)
-        if vetor is not None:
-            vetores_concatenados.append(vetor)
+    # Ler a imagem usando o PIL
+        image = Image.open(uploaded_file)
+
+    # Processar a imagem e gerar vetor de histogramas
+        vetor_histogramas = process_image(image)
+        if vetor_histogramas is not None:
+            vetores_concatenados.append(vetor_histogramas)
+
+# Converter a lista em uma matriz numpy
+#matriz_histogramas = np.array(vetores_concatenados)
+
 
     # Converter a lista em uma matriz numpy
     matriz_histogramas = np.array(vetores_concatenados)
