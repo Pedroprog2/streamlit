@@ -14,6 +14,13 @@ from scipy.stats import ttest_rel, f_oneway
 # Variáveis globais
 vetores_concatenados = []  # Lista para armazenar os vetores de histogramas
 
+
+# Função para carregar dados do GitHub
+def load_data_from_github(url):
+    response = requests.get(url)
+    response.raise_for_status()  # Verifica se a requisição foi bem-sucedida
+    return np.load(BytesIO(response.content))
+
 # Treinar e testar o modelo com diferentes componentes PLS
 def treinar_e_testar_pls(n_components, X_train, y_train, X_test, y_test):
     pls = PLSRegression(n_components=n_components)
@@ -86,16 +93,80 @@ def process_folder(folder_path):
     else:
         st.warning("Nenhum histograma para mostrar.")
 
-# Configurar a interface do Streamlit
-st.title("Análise de pH do solo via imagens")
-folder_path = st.text_input("Caminho para a pasta com as imagens")
-
-if st.button("Processar"):
-    if os.path.isdir(folder_path):
-        process_folder(folder_path)
-    else:
-        st.error("Caminho para a pasta inválido.")
 
 
 
-matriz_X = https://github.com/Pedroprog2/streamlit/blob/59d192e2be917affe84e9d3ab2b14023d027b551/X.npy
+# Subtítulo para a seção de upload
+st.subheader('Upload das imagens')
+st.write("Este aplicativo usa OpenCV para processar imagens. Você pode carregar as imagens em formato .png.")
+
+# Botão para upload de imagem
+uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
+
+# Lista para armazenar os vetores concatenados
+vetores_concatenados = []
+
+# Verifica se o arquivo foi enviado
+if uploaded_files is None:
+        st.error("Erro ao carregar a imagem.")
+        return None
+    
+    # Mostrar a imagem
+    st.image(image, caption='Imagem Original', use_column_width=True)
+
+    # Coordenadas do recorte (você pode ajustar essas coordenadas para cada imagem)
+    x, y, w, h = 0, 0, 20, 20
+
+    # Realizar o recorte
+    cropped_image = image[y:y + h, x:x + w]
+    st.image(cropped_image, caption='Imagem Recortada', use_column_width=True)
+
+    # Separar os canais de cores (B, G, R)
+    canal_azul = cropped_image[:, :, 0]
+    canal_verde = cropped_image[:, :, 1]
+    canal_vermelho = cropped_image[:, :, 2]
+
+    # Calcular os histogramas
+    hist_azul = cv2.calcHist([canal_azul], [0], None, [256], [0, 256])
+    hist_verde = cv2.calcHist([canal_verde], [0], None, [256], [0, 256])
+    hist_vermelho = cv2.calcHist([canal_vermelho], [0], None, [256], [0, 256])
+
+    # Concatenar os histogramas em um único vetor
+    vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
+    return vetor_concatenado
+
+
+
+
+
+        
+            # Criar um gráfico
+            # Criação de um gráfico 3D
+
+            #plt.figure()
+            #plt.plot(vetor_concatenado)
+            #plt.title('Histograma da Imagem')
+            #plt.xlabel('Bins')
+            #plt.ylabel('Frequência')
+            
+            # Exibir o gráfico
+            #st.pyplot(plt)
+            
+            #st.write("Histograma da Imagem:", vetor_concatenado.T)
+            #st.write("Tamanho do vetor da imagem:", vetor_concatenado.shape)
+
+        # Converter a lista em uma matriz numpy
+matriz_histogramas = np.array(vetores_concatenados)
+
+#https://github.com/Pedroprog2/blank-app-template-v1x6l39uxlg/572aa01eb6c4460f3416903e99b5178f0b03968f/TUCUNARE.npy
+# Carregar a matriz de dados
+data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'  # Substitua pelo caminho do seu arquivo .npy
+X = load_data_from_github(data_file_path)
+st.write("dados carregados!")
+#X = np.load(matriz)
+st.write(X)
+
+
+
+#matriz_X = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'
+#matriz_X = 'https://github.com/Pedroprog2/streamlit/blob/59d192e2be917affe84e9d3ab2b14023d027b551/X.npy'
