@@ -57,9 +57,12 @@ def process_image(image):
     vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
     return vetor_concatenado
 
+st.title('Análise do pH do solo via imagens')
+st.write('Bem-vind@!')
+st.write('Abaixo você poderá enviar sua imagem da solução extraída do solo com a adição de extrato de repolho roxo')
 # Subtítulo para a seção de upload
 st.subheader('Upload das imagens')
-st.write("Este aplicativo usa OpenCV para processar imagens. Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
+st.write("Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
 
 # Botão para upload de imagem
 uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
