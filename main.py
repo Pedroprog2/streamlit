@@ -64,36 +64,6 @@ def process_image(image):
     vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
     return vetor_concatenado
 
-# Processar pasta de imagens
-def process_folder(folder_path):
-    global vetores_concatenados
-
-    for filename in os.listdir(folder_path):
-        if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-            full_path = os.path.join(folder_path, filename)
-            st.write(f"Processando: {filename}")
-            image = cv2.imread(full_path)
-            if image is not None:
-                vetor_concatenado = process_image(image)
-                if vetor_concatenado is not None:
-                    vetores_concatenados.append(vetor_concatenado)
-            else:
-                st.error(f"Erro ao carregar a imagem: {filename}")
-
-    # Converter a lista em uma matriz numpy
-    if vetores_concatenados:
-        matriz_histogramas = np.array(vetores_concatenados)
-        st.write("Matriz de histogramas:")
-        st.write(matriz_histogramas)
-        st.write("Formato da matriz:", matriz_histogramas.shape)
-
-        # Processamento estatístico
-        # (Continuar o processamento conforme necessário)
-
-    else:
-        st.warning("Nenhum histograma para mostrar.")
-
-
 
 
 # Subtítulo para a seção de upload
@@ -107,7 +77,7 @@ uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "
 vetores_concatenados = []
 
 # Verifica se o arquivo foi enviado
-if uploaded_files is None:
+if image is None:
         st.error("Erro ao carregar a imagem.")
         return None
     
