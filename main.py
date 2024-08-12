@@ -44,16 +44,16 @@ def process_image(image):
         st.image(cropped_image, caption='Imagem Recortada', use_column_width=True)
 
         # Separar os canais de cores (B, G, R)
-        #cropped_image = np.array(cropped_image)
+        cropped_image = np.array(cropped_image)
         # Separar os canais de cores (B, G, R)
         canal_azul = cropped_image[:, :, 0]
         canal_verde = cropped_image[:, :, 1]
         canal_vermelho = cropped_image[:, :, 2]
 
     # Calcular os histogramas
-        hist_azul = cv2.calcHist([canal_azul], [0], None, [256], [0, 256])
-        hist_verde = cv2.calcHist([canal_verde], [0], None, [256], [0, 256])
-        hist_vermelho = cv2.calcHist([canal_vermelho], [0], None, [256], [0, 256])
+        hist_azul = np.histogram(canal_azul, bins=256, range=(0, 256))[0]
+        hist_verde = np.histogram(canal_verde, bins=256, range=(0, 256))[0]
+        hist_vermelho = np.histogram(canal_vermelho, bins=256, range=(0, 256))[0]
 
         # Concatenar os histogramas em um único vetor
         vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
