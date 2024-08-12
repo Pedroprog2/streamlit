@@ -67,6 +67,11 @@ st.write('Em seguida, pese 10 g de solo e adicione 25 mL de solução de CaCl2 0
 st.write('Agite utilizando um bastão de vidro')
 st.write('Após agitação, aguarde uma hora')
 st.write('Agite novamente e aguarde a decantação do solo')
+st.write('Após a decantação, colete 5 mL do sobrenadante e transfira para um tubo de vidro')
+st.write('Adicione 2 mL de extrato de repolho roxo e agite')
+st.write('Obtenha uma imagem digital utilizando seu celular')
+st.write('Envie a imagem neste servidor')
+
         
 
 
@@ -75,6 +80,7 @@ st.write('Agite novamente e aguarde a decantação do solo')
 
 
 # Botão para upload de imagem
+st.subheader('Upload das imagens')
 st.write("Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
 uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
 
