@@ -5,10 +5,10 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cross_decomposition import PLSRegression
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-from sklearn.metrics import mean_squared_error, make_scorer, r2_score
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVR
+#from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
+#from sklearn.metrics import mean_squared_error, make_scorer, r2_score
+#from sklearn.preprocessing import StandardScaler
+#from sklearn.svm import SVR
 from scipy.stats import ttest_rel, f_oneway
 
 # Variáveis globais
