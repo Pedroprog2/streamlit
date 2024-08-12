@@ -44,7 +44,7 @@ def process_image(image):
         st.image(cropped_image, caption='Imagem Recortada', use_column_width=True)
 
         # Separar os canais de cores (B, G, R)
-        cropped_image = np.array(cropped_image)
+        #cropped_image = np.array(cropped_image)
         # Separar os canais de cores (B, G, R)
         canal_azul = cropped_image[:, :, 0]
         canal_verde = cropped_image[:, :, 1]
