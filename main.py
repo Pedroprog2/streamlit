@@ -112,7 +112,7 @@ if uploaded_files:
 
     # Carregar a matriz de dados
     data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'
-    X_train = load_data_from_github(data_file_path)
+    X = load_data_from_github(data_file_path)
     X_train = X[0:15,:]
     st.write("Dados carregados!")
 
