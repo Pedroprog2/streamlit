@@ -88,10 +88,11 @@ y = np.array([7.57, 3.68, 6.51, 7.98, 9.4, 6.49, 3.23, 6.65, 7.66, 7.56, 7.76, 7
 # Carregar a matriz de dados
 data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'  # Substitua pelo caminho do seu arquivo .npy
 X = load_data_from_github(data_file_path)
+X_train = X[0:15,:]
 st.write("Dados de calibração carregados!")
-st.write(X)
+st.write(X_train)
 
 #Gerando o modelo PLS com 4 LVs:
-mse_train_2, mse_test_2, y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X, y, matriz_histogramas)
+mse_train_2, mse_test_2, y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y, matriz_histogramas)
 
 st.write('pH da sua amostra:', y_pred_test_2) 
