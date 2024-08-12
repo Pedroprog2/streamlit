@@ -79,7 +79,14 @@ for uploaded_file in uploaded_files:
         vetores_concatenados.append(vetor_histogramas)
 
 # Converter a lista em uma matriz numpy
+#Dados de calibração:
 matriz_histogramas = np.array(vetores_concatenados)
+dados = [7.57, 3.68, 6.51, 7.98, 9.4, 6.49, 3.23, 6.65, 7.66, 7.56, 7.76, 7.73, 7.34, 7.51, 7.00]
+
+#Gerando o modelo PLS com 4 LVs:
+ mse_train_2, mse_test_2, y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y_train, X_test, y_test)
+
+st.write('pH da sua amostra:', y_pred_test_2) 
 
 # Carregar a matriz de dados
 data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'  # Substitua pelo caminho do seu arquivo .npy
