@@ -87,7 +87,7 @@ def process_folder(folder_path):
         st.warning("Nenhum histograma para mostrar.")
 
 # Configurar a interface do Streamlit
-st.title("Processamento de Imagens com PLS e SVR")
+st.title("Análise de pH do solo via imagens")
 folder_path = st.text_input("Caminho para a pasta com as imagens")
 
 if st.button("Processar"):
