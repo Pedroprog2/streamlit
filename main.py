@@ -90,31 +90,35 @@ uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "
 # Lista para armazenar os vetores concatenados
 vetores_concatenados = []
 
-# Processar cada imagem carregada
-for uploaded_file in uploaded_files:
-    # Ler a imagem usando o PIL
-    image = Image.open(uploaded_file)
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        # Lê a imagem usando OpenCV
+        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+        image = cv2.imdecode(file_bytes, 1)
+        
+        # Processa a imagem
+        vetor = process_image(image)
+        if vetor is not None:
+            vetores_concatenados.append(vetor)
 
-    # Processar a imagem e gerar vetor de histogramas
-    vetor_histogramas = process_image(image)
-    if vetor_histogramas is not None:
-        vetores_concatenados.append(vetor_histogramas)
+    # Converter a lista em uma matriz numpy
+    matriz_histogramas = np.array(vetores_concatenados)
 
-# Converter a lista em uma matriz numpy
-#Dados de calibração:
-matriz_histogramas = np.array(vetores_concatenados)
-y = np.array([7.57, 3.68, 6.51, 7.98, 9.4, 6.49, 3.23, 6.65, 7.66, 7.56, 7.76, 7.73, 7.34, 7.51, 7.00])
+    # Carregar a matriz de dados
+    data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'
+    X_train = load_data_from_github(data_file_path)
+    X_train = X[0:15,:]
+    st.write("Dados carregados!")
 
-
-
-# Carregar a matriz de dados
-data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'  # Substitua pelo caminho do seu arquivo .npy
-X = load_data_from_github(data_file_path)
-X_train = X[0:15,:]
-st.write("Dados de calibração carregados!")
-#st.write(X_train)
-
-#Gerando o modelo PLS com 4 LVs:
-y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y, matriz_histogramas)
-
-st.write('pH da sua amostra:', y_pred_test_2) 
+    # Definir uma variável y para fins de exemplo (substitua com seus próprios dados)
+    y = np.array([7.57, 3.68, 6.51, 7.98, 9.4, 6.49, 3.23, 6.65, 7.66, 7.56, 7.76, 7.73, 7.34, 7.51, 7.00])
+    
+    # Chamada da função de treinamento e teste do PLS
+    try:
+        y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y, matriz_histogramas)
+        st.write(f"MSE Train: {y_pred_train_2}")
+        st.write(f"Predições: {y_pred_test_2}")
+    except ValueError as e:
+        st.error(f"Erro ao treinar o modelo: {e}")
+else:
+    st.write("Por favor, carregue uma imagem para processamento.")
