@@ -95,3 +95,7 @@ if st.button("Processar"):
         process_folder(folder_path)
     else:
         st.error("Caminho para a pasta inválido.")
+
+
+
+matriz_X = https://github.com/Pedroprog2/streamlit/blob/59d192e2be917affe84e9d3ab2b14023d027b551/X.npy
