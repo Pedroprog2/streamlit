@@ -16,7 +16,7 @@ def load_data_from_github(url):
     return np.load(BytesIO(response.content))
 
 # Treinar e testar o modelo com diferentes componentes PLS
-def treinar_e_testar_pls(n_components, X_train, y_train, X_test, y_test):
+def treinar_e_testar_pls(n_components, X_train, y_train, X_test):
     pls = PLSRegression(n_components=n_components)
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
@@ -24,9 +24,9 @@ def treinar_e_testar_pls(n_components, X_train, y_train, X_test, y_test):
     pls.fit(X_train_scaled, y_train)
     y_pred_train = pls.predict(X_train_scaled)
     y_pred_test = pls.predict(X_test_scaled)
-    mse_train = mean_squared_error(y_train, y_pred_train)
-    mse_test = mean_squared_error(y_test, y_pred_test)
-    return mse_train, mse_test, y_pred_train, y_pred_test
+    #mse_train = mean_squared_error(y_train, y_pred_train)
+    #mse_test = mean_squared_error(y_test, y_pred_test)
+    return  y_pred_train, y_pred_test
 
 # Processar imagem para gerar histogramas
 def process_image(image):
@@ -81,15 +81,17 @@ for uploaded_file in uploaded_files:
 # Converter a lista em uma matriz numpy
 #Dados de calibração:
 matriz_histogramas = np.array(vetores_concatenados)
-dados = [7.57, 3.68, 6.51, 7.98, 9.4, 6.49, 3.23, 6.65, 7.66, 7.56, 7.76, 7.73, 7.34, 7.51, 7.00]
+y = np.array([7.57, 3.68, 6.51, 7.98, 9.4, 6.49, 3.23, 6.65, 7.66, 7.56, 7.76, 7.73, 7.34, 7.51, 7.00])
 
-#Gerando o modelo PLS com 4 LVs:
-mse_train_2, mse_test_2, y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y_train, X_test, y_test)
 
-st.write('pH da sua amostra:', y_pred_test_2) 
 
 # Carregar a matriz de dados
 data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'  # Substitua pelo caminho do seu arquivo .npy
 X = load_data_from_github(data_file_path)
-st.write("Dados carregados!")
+st.write("Dados de calibração carregados!")
 st.write(X)
+
+#Gerando o modelo PLS com 4 LVs:
+mse_train_2, mse_test_2, y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X, y, matriz_histogramas, y_test)
+
+st.write('pH da sua amostra:', y_pred_test_2) 
