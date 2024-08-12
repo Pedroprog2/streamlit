@@ -1,19 +1,12 @@
 # Importando pacotes necessários
 import streamlit as st
-import os
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+import requests
+from io import BytesIO
 from sklearn.cross_decomposition import PLSRegression
-#from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-#from sklearn.metrics import mean_squared_error, make_scorer, r2_score
-#from sklearn.preprocessing import StandardScaler
-#from sklearn.svm import SVR
-from scipy.stats import ttest_rel, f_oneway
-
-# Variáveis globais
-vetores_concatenados = []  # Lista para armazenar os vetores de histogramas
-
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error
 
 # Função para carregar dados do GitHub
 def load_data_from_github(url):
@@ -64,11 +57,9 @@ def process_image(image):
     vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
     return vetor_concatenado
 
-
-
 # Subtítulo para a seção de upload
 st.subheader('Upload das imagens')
-st.write("Este aplicativo usa OpenCV para processar imagens. Você pode carregar as imagens em formato .png.")
+st.write("Este aplicativo usa OpenCV para processar imagens. Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
 
 # Botão para upload de imagem
 uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
@@ -76,67 +67,22 @@ uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "
 # Lista para armazenar os vetores concatenados
 vetores_concatenados = []
 
-# Verifica se o arquivo foi enviado
-if image is None:
-        st.error("Erro ao carregar a imagem.")
-        return None
-    
-    # Mostrar a imagem
-    st.image(image, caption='Imagem Original', use_column_width=True)
+# Processar cada imagem carregada
+for uploaded_file in uploaded_files:
+    # Ler a imagem
+    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+    image = cv2.imdecode(file_bytes, 1)
 
-    # Coordenadas do recorte (você pode ajustar essas coordenadas para cada imagem)
-    x, y, w, h = 0, 0, 20, 20
+    # Processar a imagem e gerar vetor de histogramas
+    vetor_histogramas = process_image(image)
+    if vetor_histogramas is not None:
+        vetores_concatenados.append(vetor_histogramas)
 
-    # Realizar o recorte
-    cropped_image = image[y:y + h, x:x + w]
-    st.image(cropped_image, caption='Imagem Recortada', use_column_width=True)
-
-    # Separar os canais de cores (B, G, R)
-    canal_azul = cropped_image[:, :, 0]
-    canal_verde = cropped_image[:, :, 1]
-    canal_vermelho = cropped_image[:, :, 2]
-
-    # Calcular os histogramas
-    hist_azul = cv2.calcHist([canal_azul], [0], None, [256], [0, 256])
-    hist_verde = cv2.calcHist([canal_verde], [0], None, [256], [0, 256])
-    hist_vermelho = cv2.calcHist([canal_vermelho], [0], None, [256], [0, 256])
-
-    # Concatenar os histogramas em um único vetor
-    vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
-    return vetor_concatenado
-
-
-
-
-
-        
-            # Criar um gráfico
-            # Criação de um gráfico 3D
-
-            #plt.figure()
-            #plt.plot(vetor_concatenado)
-            #plt.title('Histograma da Imagem')
-            #plt.xlabel('Bins')
-            #plt.ylabel('Frequência')
-            
-            # Exibir o gráfico
-            #st.pyplot(plt)
-            
-            #st.write("Histograma da Imagem:", vetor_concatenado.T)
-            #st.write("Tamanho do vetor da imagem:", vetor_concatenado.shape)
-
-        # Converter a lista em uma matriz numpy
+# Converter a lista em uma matriz numpy
 matriz_histogramas = np.array(vetores_concatenados)
 
-#https://github.com/Pedroprog2/blank-app-template-v1x6l39uxlg/572aa01eb6c4460f3416903e99b5178f0b03968f/TUCUNARE.npy
 # Carregar a matriz de dados
 data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'  # Substitua pelo caminho do seu arquivo .npy
 X = load_data_from_github(data_file_path)
-st.write("dados carregados!")
-#X = np.load(matriz)
+st.write("Dados carregados!")
 st.write(X)
-
-
-
-#matriz_X = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2eba6dee61ad39f42aa8e63182820bdf027/X.npy'
-#matriz_X = 'https://github.com/Pedroprog2/streamlit/blob/59d192e2be917affe84e9d3ab2b14023d027b551/X.npy'
