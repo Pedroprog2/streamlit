@@ -111,7 +111,7 @@ data_file_path = 'https://raw.githubusercontent.com/Pedroprog2/streamlit/eff5b2e
 X = load_data_from_github(data_file_path)
 X_train = X[0:15,:]
 st.write("Dados de calibração carregados!")
-st.write(X_train)
+#st.write(X_train)
 
 #Gerando o modelo PLS com 4 LVs:
 y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y, matriz_histogramas)
