@@ -45,11 +45,12 @@ def process_image(image):
 
         # Separar os canais de cores (B, G, R)
         cropped_image = np.array(cropped_image)
+        # Separar os canais de cores (B, G, R)
         canal_azul = cropped_image[:, :, 0]
         canal_verde = cropped_image[:, :, 1]
         canal_vermelho = cropped_image[:, :, 2]
 
-        # Calcular os histogramas
+    # Calcular os histogramas
         hist_azul = cv2.calcHist([canal_azul], [0], None, [256], [0, 256])
         hist_verde = cv2.calcHist([canal_verde], [0], None, [256], [0, 256])
         hist_vermelho = cv2.calcHist([canal_vermelho], [0], None, [256], [0, 256])
