@@ -1,7 +1,8 @@
 # Importando pacotes necessários
 import streamlit as st
-import cv2
 import numpy as np
+from streamlit_cropper import st_cropper
+from PIL import Image
 import requests
 from io import BytesIO
 from sklearn.cross_decomposition import PLSRegression
@@ -32,37 +33,34 @@ def process_image(image):
     if image is None:
         st.error("Erro ao carregar a imagem.")
         return None
-    
-    # Mostrar a imagem
+
+    # Mostrar a imagem original
     st.image(image, caption='Imagem Original', use_column_width=True)
 
-    # Coordenadas do recorte (você pode ajustar essas coordenadas para cada imagem)
-    x, y, w, h = 0, 0, 20, 20
+    # Usar o streamlit-cropper para permitir ao usuário selecionar a área de interesse
+    cropped_image = st_cropper(image, realtime_update=True, box_color='blue', aspect_ratio=None)
 
-    # Realizar o recorte
-    cropped_image = image[y:y + h, x:x + w]
-    st.image(cropped_image, caption='Imagem Recortada', use_column_width=True)
+    if cropped_image is not None:
+        st.image(cropped_image, caption='Imagem Recortada', use_column_width=True)
 
-    # Separar os canais de cores (B, G, R)
-    canal_azul = cropped_image[:, :, 0]
-    canal_verde = cropped_image[:, :, 1]
-    canal_vermelho = cropped_image[:, :, 2]
+        # Separar os canais de cores (B, G, R)
+        cropped_image = np.array(cropped_image)
+        canal_azul = cropped_image[:, :, 0]
+        canal_verde = cropped_image[:, :, 1]
+        canal_vermelho = cropped_image[:, :, 2]
 
-    # Calcular os histogramas
-    hist_azul = cv2.calcHist([canal_azul], [0], None, [256], [0, 256])
-    hist_verde = cv2.calcHist([canal_verde], [0], None, [256], [0, 256])
-    hist_vermelho = cv2.calcHist([canal_vermelho], [0], None, [256], [0, 256])
+        # Calcular os histogramas
+        hist_azul = np.histogram(canal_azul, bins=256, range=(0, 256))[0]
+        hist_verde = np.histogram(canal_verde, bins=256, range=(0, 256))[0]
+        hist_vermelho = np.histogram(canal_vermelho, bins=256, range=(0, 256))[0]
 
-    # Concatenar os histogramas em um único vetor
-    vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
-    return vetor_concatenado
+        # Concatenar os histogramas em um único vetor
+        vetor_concatenado = np.concatenate((hist_azul, hist_verde, hist_vermelho), axis=None)
+        return vetor_concatenado
 
-st.title('Análise do pH do solo via imagens')
-st.write('Bem-vind@!')
-st.write('Abaixo você poderá enviar sua imagem da solução extraída do solo com a adição de extrato de repolho roxo')
 # Subtítulo para a seção de upload
 st.subheader('Upload das imagens')
-st.write("Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
+st.write("Este aplicativo usa OpenCV para processar imagens. Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
 
 # Botão para upload de imagem
 uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
@@ -72,9 +70,8 @@ vetores_concatenados = []
 
 # Processar cada imagem carregada
 for uploaded_file in uploaded_files:
-    # Ler a imagem
-    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    image = cv2.imdecode(file_bytes, 1)
+    # Ler a imagem usando o PIL
+    image = Image.open(uploaded_file)
 
     # Processar a imagem e gerar vetor de histogramas
     vetor_histogramas = process_image(image)
