@@ -93,6 +93,6 @@ st.write("Dados de calibração carregados!")
 st.write(X_train)
 
 #Gerando o modelo PLS com 4 LVs:
-mse_train_2, mse_test_2, y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y, matriz_histogramas)
+y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y, matriz_histogramas)
 
 st.write('pH da sua amostra:', y_pred_test_2) 
