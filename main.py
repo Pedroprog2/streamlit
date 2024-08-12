@@ -59,10 +59,23 @@ def process_image(image):
         return vetor_concatenado
 
 # Subtítulo para a seção de upload
-st.subheader('Upload das imagens')
-st.write("Este aplicativo usa OpenCV para processar imagens. Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
+st.subheader('Análise de pH do solo por meio de imagens digitais e repolho roxo')
+st.write('Bem-vind@!')
+st.subheader('Orientações')
+st.write('O intuito desta plataforma é determinar o pH do solo. Para tanto, a amostra de solo deve ser seca, moída e peneirada à 2 mm.')
+st.write('Em seguida, pese 10 g de solo e adicione 25 mL de solução de CaCl2 0,01 mol/L')
+st.write('Agite utilizando um bastão de vidro')
+st.write('Após agitação, aguarde uma hora')
+st.write('Agite novamente e aguarde a decantação do solo')
+        
+
+
+
+
+
 
 # Botão para upload de imagem
+st.write("Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
 uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
 
 # Lista para armazenar os vetores concatenados
