@@ -9,7 +9,7 @@ from sklearn.cross_decomposition import PLSRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 
-[theme]
+
 
 primaryColor="#6eb52f"
 backgroundColor="#f0f0f5"
