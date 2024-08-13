@@ -60,10 +60,10 @@ def process_image(image):
         return vetor_concatenado
 
 # Subtítulo para a seção de upload
-st.subheader('Análise de pH do solo por meio de imagens digitais e repolho roxo', divider="gray")
+st.title('Análise de pH do solo por meio de imagens digitais e repolho roxo', divider="gray")
 st.write('Bem-vind@!')
 #st.subheader('Orientações')
-st.subheader("Orientações", divider=True)
+st.header("Orientações")
 st.write('- O intuito desta plataforma é determinar o pH do solo. Para tanto, a amostra de solo deve ser seca, moída e peneirada à 2 mm.')
 st.write('- Em seguida, pese 10 g de solo e adicione 25 mL de solução de CaCl2 0,01 mol/L. Agite utilizando um bastão de vidro.')
 st.write('- Auarde uma hora. Agite novamente e aguarde a decantação do solo.')
