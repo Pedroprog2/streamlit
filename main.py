@@ -11,11 +11,20 @@ from sklearn.metrics import mean_squared_error
 
 
 
-primaryColor="#6eb52f"
-backgroundColor="#f0f0f5"
-secondaryBackgroundColor="#e0e0ef"
-textColor="#262730"
-font="sans serif"
+# Define o CSS diretamente em uma string
+css = """
+<style>
+body {
+    background-color: #f0f0f0; /* Cor de fundo desejada */
+    background-image: url('https://example.com/path_to_image.jpg'); /* Caminho para uma imagem de fundo (opcional) */
+    background-size: cover; /* Ajusta o tamanho da imagem de fundo */
+    background-repeat: no-repeat; /* Não repete a imagem */
+}
+</style>
+"""
+
+# Injeta o CSS usando markdown
+st.markdown(css, unsafe_allow_html=True)
 
 # Função para carregar dados do GitHub
 def load_data_from_github(url):
