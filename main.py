@@ -60,7 +60,7 @@ def process_image(image):
         return vetor_concatenado
 
 # Subtítulo para a seção de upload
-st.subheader('Análise de pH do solo por meio de imagens digitais e repolho roxo')
+st.subheader('Análise de pH do solo por meio de imagens digitais e repolho roxo', divider="gray")
 st.write('Bem-vind@!')
 #st.subheader('Orientações')
 st.subheader("Orientações", divider=True)
