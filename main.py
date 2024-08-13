@@ -16,9 +16,9 @@ css = """
 <style>
 body {
     background-color: #f0f0f0; /* Cor de fundo desejada */
-    background-image: url('https://example.com/path_to_image.jpg'); /* Caminho para uma imagem de fundo (opcional) */
-    background-size: cover; /* Ajusta o tamanho da imagem de fundo */
-    background-repeat: no-repeat; /* Não repete a imagem */
+    
+    
+    
 }
 </style>
 """
