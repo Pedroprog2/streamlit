@@ -65,15 +65,15 @@ st.write('Bem-vind@!')
 
 #st.subheader('Orientações')
 st.header("Orientações", divider="gray")
-st.write('- O intuito desta plataforma é determinar o pH do solo utilizando o extrato de repolho roxo.')
-st.subheader('Preparo da amostra')
+st.write('- O intuito desta plataforma é determinar o pH do solo utilizando o extrato de repolho roxo. Atente-se as orientações abaixo:')
+st.subheader('Preparo da amostra', divider="gray")
 st.write('- A amostra de solo deve estar seca, moída e peneirada à 2 mm.')
 st.write('- Pese 10 g de solo e adicione 25 mL de solução de CaCl2 0,01 mol/L. Agite utilizando um bastão de vidro.')
 st.write('- Aguarde uma hora. Agite novamente e aguarde a decantação do solo.')
 st.write('- Após a decantação, colete 5 mL do sobrenadante e transfira para um tubo de vidro.')
 st.write('- Guarde os tubos em local adequado enquanto prepara o extrato de repolho roxo.')
 
-st.subheader('Preparo do extrato de replho roxo', divider="gray")
+st.subheader('Preparo do extrato de repolho roxo', divider="gray")
 st.write('- Pese 25 gramas de repolho roxo, previamente lavados. Em seguida, adicione 100 mL de água destilada. Aqueça até a fervura.')
 st.write('- Após o resfriamento, filtre. O extrato está pronto!')
 
@@ -84,7 +84,10 @@ st.write('- Observe a mudança de cor')
 st.write('- Obtenha uma imagem digital utilizando seu celular')
 st.write('- Envie a imagem neste servidor')
 st.write('- A Plataforma vai carregar sua imagem, selecione a região do tubo que contenha sua amostra')
-st.write('- O valor do pH da sua amostra será calculado automaticamente pelo sistema, o resultado será gerado abaixo')
+st.write('- O valor do pH da sua amostra será calculado automaticamente pelo sistema, o resultado será gerado abaixo (após as imagens).')
+st.write(' - Como você já sabe, o valor do pH varia na escala de 0 a 14, caso a sua amostra esteja fora desta faixa, utilize um recorte menor da imagem e tente novamente')
+st.write('- Neste link você pode acessar algumas imagens de tubos contendo as soluções do solo e o extrato de repolho roxo: https://drive.google.com/drive/folders/10YKwXpJL8zCH5HXVxd3VaTD6QWNGtB_e?usp=sharing')
+st.write(' - Em caso de problemas ou dúvidas, escreva para: morais.pedro@ufma.br')
 
         
 
