@@ -9,6 +9,14 @@ from sklearn.cross_decomposition import PLSRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 
+[theme]
+
+primaryColor="#6eb52f"
+backgroundColor="#f0f0f5"
+secondaryBackgroundColor="#e0e0ef"
+textColor="#262730"
+font="sans serif"
+
 # Função para carregar dados do GitHub
 def load_data_from_github(url):
     response = requests.get(url)
