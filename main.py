@@ -62,13 +62,25 @@ def process_image(image):
 # Subtítulo para a seção de upload
 st.title('Análise de pH do solo por meio de imagens digitais e repolho roxo')
 st.write('Bem-vind@!')
+
 #st.subheader('Orientações')
 st.header("Orientações", divider="gray")
-st.write('- O intuito desta plataforma é determinar o pH do solo. Para tanto, a amostra de solo deve ser seca, moída e peneirada à 2 mm.')
-st.write('- Em seguida, pese 10 g de solo e adicione 25 mL de solução de CaCl2 0,01 mol/L. Agite utilizando um bastão de vidro.')
-st.write('- Auarde uma hora. Agite novamente e aguarde a decantação do solo.')
+st.write('- O intuito desta plataforma é determinar o pH do solo utilizando o extrato de repolho roxo.')
+st.subheader('Preparo da amostra')
+st.write('- A amostra de solo deve estar seca, moída e peneirada à 2 mm.')
+st.write('- Pese 10 g de solo e adicione 25 mL de solução de CaCl2 0,01 mol/L. Agite utilizando um bastão de vidro.')
+st.write('- Aguarde uma hora. Agite novamente e aguarde a decantação do solo.')
 st.write('- Após a decantação, colete 5 mL do sobrenadante e transfira para um tubo de vidro.')
-st.write('- Guarde os tubos em local adequado enquanto prepara o extrato de repolho roxo. Adicione 2 mL de extrato de repolho roxo e agite')
+st.write('- Guarde os tubos em local adequado enquanto prepara o extrato de repolho roxo.')
+
+st.subheader('Preparo do extrato de replho roxo', divider="gray")
+st.write('- Pese 25 gramas de repolho roxo, previamente lavados. Em seguida, adicione 100 mL de água destilada. Aqueça até a fervura.')
+st.write('- Após o resfriamento, filtre. O extrato está pronto!')
+
+
+st.subheader('Utilizando a plataforma', divider="gray")
+st.write('- Adicione 2 mL de extrato de repolho roxo em cada tubo. Agite!')
+st.write('- Observe a mudança de cor')
 st.write('- Obtenha uma imagem digital utilizando seu celular')
 st.write('- Envie a imagem neste servidor')
 st.write('- A Plataforma vai carregar sua imagem, selecione a região do tubo que contenha sua amostra')
