@@ -15,7 +15,7 @@ from sklearn.metrics import mean_squared_error
 css = """
 <style>
 body {
-    background-color: #f0f0f0; /* Cor de fundo desejada */
+    background-color: #964B00; /* Cor de fundo desejada */
     
     
     
