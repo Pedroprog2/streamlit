@@ -155,7 +155,7 @@ if uploaded_files:
     try:
         y_pred_train_2, y_pred_test_2 = treinar_e_testar_pls(4, X_train, y, matriz_histogramas)
         #st.write(f"MSE Train: {y_pred_train_2}")
-         st.success(f"Resultado do pH da sua amostra: {y_pred_test_2}")
+        st.success(f"Resultado do pH da sua amostra: {y_pred_test_2}")
 
    
     except ValueError as e:
