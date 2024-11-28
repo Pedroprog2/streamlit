@@ -28,16 +28,17 @@ body {
 </style>
 """
 
-# CSS básico para ajustes estéticos
 st.markdown(
     """
     <style>
-    body {
-        background-color: #f4f4f4;
+    html, body {
+        background-color: #000000; /* Cor preta */
+        color: white; /* Texto branco para melhor contraste */
     }
     .stApp {
         max-width: 90%;
         margin: auto;
+        background-color: #000000; /* Também define fundo preto no conteúdo */
     }
     </style>
     """,
