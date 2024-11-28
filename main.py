@@ -78,8 +78,8 @@ def process_image(image):
 
 # Subtítulo para a seção de upload
 st.title('Análise de pH do solo por meio de imagens digitais e repolho roxo')
-st.write('Atualizado hoje (29/08/2024)')
-st.write('Bem-vind@!')
+st.write('Atualizado hoje (03/12/2024)')
+st.write('Bem-vind@! Aproveite o SEMIC')
 
 #st.subheader('Orientações')
 st.header("Orientações", divider="gray")
