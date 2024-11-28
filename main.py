@@ -21,7 +21,7 @@ body {
     
 }
 </style>
-"""
+
 
 # CSS para ajustar a posição da imagem
 st.markdown(
@@ -53,6 +53,8 @@ st.markdown(
 
 # Injeta o CSS usando markdown
 st.markdown(css, unsafe_allow_html=True)
+"""
+
 
 # Função para carregar dados do GitHub
 def load_data_from_github(url):
