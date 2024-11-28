@@ -28,6 +28,22 @@ body {
 </style>
 """
 
+# CSS básico para ajustes estéticos
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f4f4f4;
+    }
+    .stApp {
+        max-width: 90%;
+        margin: auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # CSS para ajustar a posição da imagem
 st.markdown(
     """
