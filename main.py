@@ -29,7 +29,7 @@ st.markdown(
         justify-content: flex-start;
     }
     .left-aligned-image img {
-        max-width: 100%; /* Ajusta a largura para responsividade */
+        max-width: 60%; /* Ajusta a largura para responsividade */
     }
     </style>
     """,
