@@ -22,7 +22,7 @@ st.markdown(
     """
     <style>
     body {
-        background-color: #f4f4f4;
+        background-color: #964B00;
     }
     .stApp {
         max-width: 90%;
