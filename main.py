@@ -125,6 +125,15 @@ st.title('Análise de pH do solo por meio de imagens digitais e repolho roxo')
 st.caption("Atualizado em 03/12/2024")
 st.info("Bem-vind@ ao SEMIC! Utilize a plataforma para calcular o pH do solo de maneira prática e inovadora.")
 
+# Sidebar para orientações
+with st.sidebar:
+    st.header("📋 Orientações")
+    st.write("Instruções detalhadas para o preparo das amostras e do extrato de repolho roxo.")
+    st.subheader("Links Úteis")
+    st.write("[Acesse imagens de exemplo](https://drive.google.com/drive/folders/10YKwXpJL8zCH5HXVxd3VaTD6QWNGtB_e?usp=sharing)")
+    st.write("Dúvidas: morais.pedro@ufma.br")
+
+
 
 #st.subheader('Orientações')
 st.header("Orientações", divider="gray")
@@ -160,7 +169,7 @@ st.write(' - Em caso de problemas ou dúvidas, escreva para: morais.pedro@ufma.b
 
 
 # Botão para upload de imagem
-st.subheader('Upload das imagens')
+st.subheader("📤 Upload de Imagens")
 st.write("Você pode carregar as imagens em formato .png, .jpg ou .jpeg.")
 uploaded_files = st.file_uploader("Escolha uma imagem...", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
 
