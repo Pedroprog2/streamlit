@@ -40,7 +40,7 @@ st.markdown(
 st.markdown(
     """
     <div class="left-aligned-image">
-        <img src="https://via.placeholder.com/150" alt="Minha Imagem">
+        <img src="https://portalpadrao.ufma.br/site/noticias/semic-e-semiti-celebracao-da-iniciacao-cientifica-tecnologica-e-de-inovacao-sera-realizada-de-02-a-06-de-dezembro-na-ufma/2024-11-26-semic-e-semiti-1.jpeg/@@images/0d7016bb-0dcf-4860-ba42-93e6137d2a8d.jpeg" alt="Minha Imagem">
     </div>
     """,
     unsafe_allow_html=True
