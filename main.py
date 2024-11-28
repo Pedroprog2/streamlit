@@ -23,6 +23,34 @@ body {
 </style>
 """
 
+# CSS para ajustar a posição da imagem
+st.markdown(
+    """
+    <style>
+    .left-aligned-image {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .left-aligned-image img {
+        max-width: 100%; /* Ajusta a largura para responsividade */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Insere a imagem
+st.markdown(
+    """
+    <div class="left-aligned-image">
+        <img src="https://portalpadrao.ufma.br/site/noticias/semic-e-semiti-celebracao-da-iniciacao-cientifica-tecnologica-e-de-inovacao-sera-realizada-de-02-a-06-de-dezembro-na-ufma/2024-11-26-semic-e-semiti-1.jpeg/@@images/0d7016bb-0dcf-4860-ba42-93e6137d2a8d.jpeg" alt="Minha Imagem">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
 # Injeta o CSS usando markdown
 st.markdown(css, unsafe_allow_html=True)
 
