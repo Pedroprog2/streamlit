@@ -55,6 +55,7 @@ st.markdown(
 st.markdown(css, unsafe_allow_html=True)
 """
 
+st.image("ttps://portalpadrao.ufma.br/site/noticias/semic-e-semiti-celebracao-da-iniciacao-cientifica-tecnologica-e-de-inovacao-sera-realizada-de-02-a-06-de-dezembro-na-ufma/2024-11-26-semic-e-semiti-1.jpeg/@@images/0d7016bb-0dcf-4860-ba42-93e6137d2a8d.jpeg")  # Substitua pela URL da sua imagem
 
 # Função para carregar dados do GitHub
 def load_data_from_github(url):
