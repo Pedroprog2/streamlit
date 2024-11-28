@@ -16,6 +16,24 @@ st.set_page_config(
     layout="wide",
 )
 
+
+# CSS básico para ajustes estéticos
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f4f4f4;
+    }
+    .stApp {
+        max-width: 90%;
+        margin: auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
 # Define o CSS diretamente em uma string
 css = """
 <style>
@@ -34,7 +52,7 @@ st.markdown(
         justify-content: flex-start;
     }
     .left-aligned-image img {
-        max-width: 60%; /* Ajusta a largura para responsividade */
+        max-width: 30%; /* Ajusta a largura para responsividade */
     }
     </style>
     """,
