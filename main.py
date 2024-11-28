@@ -35,13 +35,13 @@ st.markdown(
 
 
 # Define o CSS diretamente em uma string
-css = """
-<style>
-body {
-    background-color: #964B00; /* Cor de fundo desejada */    
-}
-</style>
-"""
+#css = """
+#<style>
+#body {
+#    background-color: #964B00; /* Cor de fundo desejada */    
+#}
+#</style>
+#"""
 
 # CSS para ajustar a posição da imagem
 st.markdown(
