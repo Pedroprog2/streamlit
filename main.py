@@ -17,21 +17,6 @@ st.set_page_config(
 )
 
 
-# CSS básico para ajustes estéticos
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #964B00;
-    }
-    .stApp {
-        max-width: 90%;
-        margin: auto;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 
 
 # Define o CSS diretamente em uma string
