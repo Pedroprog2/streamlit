@@ -36,7 +36,7 @@ st.markdown(
         color: white; /* Texto branco para melhor contraste */
     }
     .stApp {
-        max-width: 90%;
+        max-width: 80%;
         margin: auto;
         background-color: #000000; /* Também define fundo preto no conteúdo */
     }
