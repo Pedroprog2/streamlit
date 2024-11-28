@@ -9,7 +9,12 @@ from sklearn.cross_decomposition import PLSRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 
-
+# Configurações iniciais
+st.set_page_config(
+    page_title="Plataforma de pH do Solo 🌱",
+    page_icon="🌱",
+    layout="wide",
+)
 
 # Define o CSS diretamente em uma string
 css = """
