@@ -20,6 +20,33 @@ body {
 </style>
 """
 
+# CSS para ajustar a posição da imagem
+st.markdown(
+    """
+    <style>
+    .left-aligned-image {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .left-aligned-image img {
+        max-width: 100%; /* Ajusta a largura para responsividade */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Insere a imagem
+st.markdown(
+    """
+    <div class="left-aligned-image">
+        <img src="https://via.placeholder.com/150" alt="Minha Imagem">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # Função para carregar dados do GitHub
 def load_data_from_github(url):
     response = requests.get(url)
