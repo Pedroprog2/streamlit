@@ -15,26 +15,22 @@ from sklearn.metrics import mean_squared_error
 css = """
 <style>
 body {
-    background-color: #964B00; /* Cor de fundo desejada */
-    
-    
-    
+    background-color: #964B00; /* Cor de fundo desejada */    
 }
 </style>
-
 
 # CSS para ajustar a posição da imagem
 st.markdown(
     """
-    <style>
-    .left-aligned-image {
-        display: flex;
-        justify-content: flex-start;
+<style>
+.left-aligned-image {
+    display: flex;
+    justify-content: flex-start;
     }
     .left-aligned-image img {
-        max-width: 100%; /* Ajusta a largura para responsividade */
+    max-width: 100%; /* Ajusta a largura para responsividade */
     }
-    </style>
+</style>
     """,
     unsafe_allow_html=True
 )
