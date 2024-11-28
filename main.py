@@ -122,8 +122,9 @@ def process_image(image):
 
 # Subtítulo para a seção de upload
 st.title('Análise de pH do solo por meio de imagens digitais e repolho roxo')
-st.write('Atualizado hoje (03/12/2024)')
-st.write('Bem-vind@! Aproveite o SEMIC')
+st.caption("Atualizado em 03/12/2024")
+st.info("Bem-vind@ ao SEMIC! Utilize a plataforma para calcular o pH do solo de maneira prática e inovadora.")
+
 
 #st.subheader('Orientações')
 st.header("Orientações", divider="gray")
